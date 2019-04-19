@@ -6,4 +6,5 @@ target 'Twittermenti' do
   use_frameworks!
 
   # Pods for Twittermenti
+pod 'SwiftyJSON'
 end
