@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sentimentLabel: UILabel!
     
-   // var swifter:Swifter = Swifter(consumerKey: "", consumerSecret: "")
+    var swifter:Swifter = Swifter(consumerKey: "", consumerSecret: "")
     
 
 
@@ -29,48 +29,11 @@ class ViewController: UIViewController {
         
         let public_API_key = (dict?["public_key"]!) as! String
         let private_API_key = (dict?["private_key"]!) as! String
-        let sentimentClassifier = TweetSentimentalClassifier()
     
         
-       let swifter = Swifter(consumerKey: "kYVs9bqA0cviHvMKENap3aWZ2", consumerSecret: private_API_key)
-        swifter.searchTweet(using: "@Facebook", lang: "en", count: 100, tweetMode: .extended, success: { (result, metadata) in
-        var  tweets = [TweetSentimentalClassifierInput]()
-        
-            for i in 0..<100{
-                if let tweet = result[i]["full_text"].string  {
-                       let tweetInputClassifier = TweetSentimentalClassifierInput(text: tweet)
-                       tweets.append(tweetInputClassifier)
-                }
-            }
-            
-            do{
-                let predictions = try sentimentClassifier.predictions(inputs: tweets)
-                
-                var sentimentalScore = 0
-                
-                
-                
-                for prediction in predictions{
-                    if prediction.label == "Pos" {
-                        sentimentalScore = sentimentalScore + 1
-                    }else if (prediction.label == "Neg"){
-                        sentimentalScore = sentimentalScore - 1
-                        
-                    }
-                    
-                }
-                
-                print(sentimentalScore)
-                
-            }catch{
-                print("Error in prediction stage \(error)")
-            }
-        }){(error)in print("That was an error with Twitter API \(error)")}
-        
+        swifter = Swifter(consumerKey: "kYVs9bqA0cviHvMKENap3aWZ2", consumerSecret: private_API_key)
 
-        
-    
-        
+
         
         
     }
@@ -81,9 +44,73 @@ class ViewController: UIViewController {
     }
 
     @IBAction func predictPressed(_ sender: Any) {
+        
+         let sentimentClassifier = TweetSentimentalClassifier()
+         let text = textField.text!
+         sentimentLabel.text = "⏳"
     
-    
-    }
+        
+            swifter.searchTweet(using: text, lang: "en", count: 100, tweetMode: .extended, success: { (result, metadata) in
+                var  tweets = [TweetSentimentalClassifierInput]()
+                
+                for i in 0..<100{
+                    if let tweet = result[i]["full_text"].string  {
+                        let tweetInputClassifier = TweetSentimentalClassifierInput(text: tweet)
+                        tweets.append(tweetInputClassifier)
+                    }
+                }
+                
+                do{
+                    let predictions = try sentimentClassifier.predictions(inputs: tweets)
+                    
+                    var neutral = 0
+                    var positiveScore = 0
+                    var negativeScore = 0
+                    var sentimentalScore = 0
+                    
+                    
+                    
+                    for prediction in predictions{
+                        if prediction.label == "Pos" {
+                            positiveScore = positiveScore + 1
+                            sentimentalScore = sentimentalScore + 1
+                        }
+                        if (prediction.label == "Neg"){
+                            negativeScore = negativeScore + 1
+                            sentimentalScore = sentimentalScore - 1
+                        }
+                        
+                    }
+                    
+                    neutral = 100 - positiveScore - negativeScore
+                    
+                    print("Positive:\(positiveScore)")
+                    print("Negative:\(negativeScore)")
+                    print("neutral:\(neutral)")
+                    print("Sentimental score: \(sentimentalScore)")
+                    
+                    if sentimentalScore > 20 {
+                        self.sentimentLabel.text = "😍"
+                    }else if sentimentalScore > 10 {
+                        self.sentimentLabel.text = "☺️"
+                    }else if sentimentalScore > 0 {
+                        self.sentimentLabel.text = "😀"
+                    }else if sentimentalScore == 0{
+                        self.sentimentLabel.text = "😐"
+                    }else if sentimentalScore > -10{
+                        self.sentimentLabel.text = "😢"
+                    }else if sentimentalScore > -20{
+                        self.sentimentLabel.text = "😤"
+                    }else {
+                        self.sentimentLabel.text = "🤮"
+                    }
+                    
+                }catch{
+                    print("Error in prediction stage \(error)")
+                }
+            }){(error)in print("That was an error with Twitter API \(error)")}
+            
+        }
     
 }
 
