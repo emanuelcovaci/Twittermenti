@@ -15,8 +15,8 @@
 		AD9EC65A20FE2EF7002AE9BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9EC65820FE2EF7002AE9BF /* LaunchScreen.storyboard */; };
 		B599C7A82268CDC20007E116 /* SwifteriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B599C7A12268CD3F0007E116 /* SwifteriOS.framework */; };
 		B599C7A92268CDC20007E116 /* SwifteriOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B599C7A12268CD3F0007E116 /* SwifteriOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5E4CDC72268EA4100426972 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5E4CDC02268E91300426972 /* Secrets.plist */; };
 		B5EB3FAA226614F70073FDAE /* TweetSentimentalClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3FA9226614F70073FDAE /* TweetSentimentalClassifier.mlmodel */; };
+		B5ECDAD1226B582C00636508 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5ECDAD0226B582C00636508 /* Property List.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +89,8 @@
 		AD9EC65920FE2EF7002AE9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD9EC65B20FE2EF7002AE9BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B599C7962268CD3F0007E116 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = "../../Desktop/Swifter-master/Swifter.xcodeproj"; sourceTree = "<group>"; };
-		B5E4CDC02268E91300426972 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Secrets.plist; path = ../Secrets.plist; sourceTree = "<group>"; };
 		B5EB3FA9226614F70073FDAE /* TweetSentimentalClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TweetSentimentalClassifier.mlmodel; sourceTree = "<group>"; };
+		B5ECDAD0226B582C00636508 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = SOURCE_ROOT; };
 		D11CD66B93C1F47F302B0CD0 /* Pods-Twittermenti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twittermenti.debug.xcconfig"; path = "Target Support Files/Pods-Twittermenti/Pods-Twittermenti.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,10 +141,10 @@
 				B5EB3FA9226614F70073FDAE /* TweetSentimentalClassifier.mlmodel */,
 				AD9EC64F20FE2EF4002AE9BF /* AppDelegate.swift */,
 				AD9EC65120FE2EF4002AE9BF /* ViewController.swift */,
+				B5ECDAD0226B582C00636508 /* Property List.plist */,
 				AD9EC65320FE2EF4002AE9BF /* Main.storyboard */,
 				AD9EC65620FE2EF7002AE9BF /* Assets.xcassets */,
 				AD9EC65820FE2EF7002AE9BF /* LaunchScreen.storyboard */,
-				B5E4CDC02268E91300426972 /* Secrets.plist */,
 				AD9EC65B20FE2EF7002AE9BF /* Info.plist */,
 			);
 			path = Twittermenti;
@@ -279,7 +279,7 @@
 			files = (
 				AD9EC65A20FE2EF7002AE9BF /* LaunchScreen.storyboard in Resources */,
 				AD9EC65720FE2EF7002AE9BF /* Assets.xcassets in Resources */,
-				B5E4CDC72268EA4100426972 /* Secrets.plist in Resources */,
+				B5ECDAD1226B582C00636508 /* Property List.plist in Resources */,
 				AD9EC65520FE2EF4002AE9BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
